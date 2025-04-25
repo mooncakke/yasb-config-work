@@ -38,31 +38,33 @@ bars:
       right: 6
     widgets:
       left: [
-        "win_button",
+        #"win_button",
         "home",
-        "media",
-        #"clock",
         "komorebi_workspaces",
         "komorebi_active_layout",
+        "bluetooth",
+        "whkd",
+        "disk",
+        "clock",
+        "notes",
         #"active_window",
       ]
       center: [
         "apps",
-        #"media",
+        "media",
       ]
       right: [
-        #"media",
         #"taskbar",
-        "disk",
-        "memory",
-        "cpu",
+        #"bin",
+        #"memory",
+        #"cpu",
         #"wifi",
         #"traffic",
         "weather",
-        #"microphone",
-        "volume",
+        "pomodoro",
         "battery",
-        "bluetooth",
+        "volume",
+        "microphone",
         "brightness",
         "power_menu"
         ]
@@ -110,26 +112,50 @@ widgets:
       max_length: 56
       max_length_ellipsis: "..."
       monitor_exclusive: false
+
   clock:
     type: "yasb.clock.ClockWidget"
     options:
-      label: "{%a, %d %b %H:%M}"
-      label_alt: "{%A, %d %B %Y %H:%M}"
-      locale: "pt-BR"
+      label: "\uf017 {%a, %d %b %H:%M:%S}"
+      label_alt: "\uf017 {%A, %d %B %Y %H:%M:%S}"
+      locale: ""   # pt_BR.UTF-8 <--- Aqui!
+      update_interval: 1000
       timezones: []
+      calendar: 
+        blur: True
+        round_corners: True
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "center"
+        direction: "down"
+        distance: 6
       callbacks:
-        on_left: "toggle_label"
+        on_left: "toggle_calendar"
+        on_middle: "toggle_label"
+        on_right: "next_timezone"
+
   disk:
     type: "yasb.disk.DiskWidget"
     options:
-        label: "C: {space[free][gb]}"
+        label: "<span>\uf473</span>"
         label_alt: "{volume_label} {space[used][gb]} / {space[total][gb]}"
         volume_label: "C"
-        decimal_display: 0
-        update_interval: 500 # Update interval in seconds
+        update_interval: 60
+        group_label:
+          volume_labels: ["C"]
+          show_label_name: true
+          blur: True
+          round_corners: True
+          round_corners_type: "small"
+          border_color: "System"
+          alignment: "right"
+          direction: "down"
+          distance: 6
         callbacks:
-          on_middle: "do_nothing"
-          on_right: "exec explorer C:\\" # Open disk C in file explorer`
+          on_left: "toggle_group"
+          on_middle: "toggle_label"
+          on_right: "exec explorer C:\\" # Open disk C in file explorer
+
   battery:
     type: "yasb.battery.BatteryWidget"
     options:
@@ -284,22 +310,34 @@ widgets:
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
       api_key: "3bf4cf9a7c3f40d6b31174128242807"
+      show_alerts: true
       update_interval: 600
       hide_decimal: true
-      location: "Joao Pessoa 58081070"
+      units: "metric"
+      location: "Joao Pessoa, PB, BRA"
       callbacks:
-        on_left: "toggle_label"
-      icons:
-        sunnyDay: "\udb81\udd99"
-        clearNight: "\udb81\udd99"
+        on_left: "toggle_card"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      icons: 
+        sunnyDay: "\ue30d"
+        clearNight: "\ue32b"
         cloudyDay: "\udb81\udd99"
-        cloudyNight: "\udb81\udd99"
-        rainyDay: "\udb81\udd99"
-        rainyNight: "\udb81\udd99"
-        snowyIcyDay: "\udb81\udd99"
-        snowyIcyNight: "\udb81\udd99"
-        blizzard: "\udb81\udd99"
-        default: "\udb81\udd99"
+        cloudyNight: "\ue311"
+        rainyDay: "\udb81\ude7e"
+        rainyNight: "\udb81\ude7e"
+        snowyIcyDay: "\udb81\udd98"
+        snowyIcyNight: "\udb81\udd98"
+        blizzard: "\uebaa"
+        default: "\uebaa"
+      weather_card: 
+        blur: True
+        round_corners: True
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        icon_size: 64
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
@@ -312,8 +350,16 @@ widgets:
         - "\uf027"
         - "\uf027"
         - "\uf028"
+      audio_menu:
+        blur: True
+        round_corners: True
+        round_corners_type: 'normal'
+        border_color: 'System'
+        alignment: 'right'
+        direction: 'down' 
       callbacks:
-        on_left: "toggle_mute"
+        on_left: "toggle_volume_menu"
+        on_middle: "toggle_mute"
         on_right: "exec cmd.exe /c start ms-settings:sound"
   microphone:
     type: "yasb.microphone.MicrophoneWidget"
@@ -373,17 +419,18 @@ widgets:
       label: "{data}"
       app_list:
         - { icon: "\uf422", launch: "search" }
+        - {icon: "\uf0a2", launch: "notification_center"}
         - { icon: "\ueb03", launch: "cmd /c Taskmgr" }
         - {icon: "\uf489", launch: "wt"}
-        #- {icon: "\uf0a2", launch: "notification_center"}
-        #- {icon: "\ueb51", launch: "quick_settings"}
+        - {icon: "\ueb51", launch: "quick_settings"}
         - { icon: "\uf268", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Google Chrome.lnk" }
         - { icon: "\uf269", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Firefox.lnk" }
         - { icon: "\ued39", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Vivaldi.lnk" }
-        - { icon: "\uf1bc", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Spotify.lnk" }
+        - { icon: "\uf1bc", launch: "C:\\Users\\midas\\AppData\\Roaming\\Spotify\\Spotify.exe" }
         - { icon: "\uf370", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Thunderbird.lnk" }
-        #- { icon: "\ue848", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Notion.lnk" }
-        #- { icon: "\uf285", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Obsidian.lnk" }
+        - { icon: "\ue848", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Notion.lnk" }
+        #- { icon: "\ue787", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Obsidian.lnk" }
+        - { icon: "\ue7da", launch: "C:\\Users\\midas\\AppData\\Local\\Figma\\app-125.2.3\\Figma.exe" }
         #- { icon: "\ueddb", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Zen.lnk" }
         - { icon: "\ue8da", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk" }
   taskbar:
@@ -401,3 +448,98 @@ widgets:
         left: 0
         bottom: 0
         right: 0
+    
+  whkd:
+    type: "yasb.whkd.WhkdWidget"
+    options:
+      label: "<span>\uf11c</span>"
+
+  notes:
+    type: "yasb.notes.NotesWidget"
+    options:
+      label: "<span>\udb82\udd0c</span> {count}"
+      label_alt: "{count} notes"
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        max_title_size: 150
+        show_date_time: true
+      icons:
+        note: "\udb82\udd0c"
+        delete: "\ue20d"
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+
+  pomodoro:
+    type: "yasb.pomodoro.PomodoroWidget"
+    options:
+      label: "<span>\uf252</span> {remaining}"
+      label_alt: "<span>{icon}</span> {session}/{total_sessions} - {status}"
+      work_duration: 25
+      break_duration: 5
+      long_break_duration: 15
+      long_break_interval: 4
+      auto_start_breaks: true
+      auto_start_work: true
+      sound_notification: true
+      show_notification: true
+      hide_on_break: false
+      session_target: 8
+      icons:
+        work: "\uf252"
+        break: "\uf253"
+        paused: "\uf254"
+      container_padding:
+        top: 0
+        left: 12
+        bottom: 0
+        right: 12
+
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        circle_background_color: "#09ffffff"
+        circle_work_progress_color: "#88c0d0"
+        circle_break_progress_color: "#a3be8c"
+        circle_thickness: 8
+        circle_size: 160
+
+      callbacks:
+        on_left: "toggle_menu"
+
+  bin:
+    type: "yasb.recycle_bin.RecycleBinWidget"
+    options:
+      label: "<span>{icon}</span> Items {items_count} ({items_size})"
+      label_alt: "Items {items_count}, Total size ({items_size})"
+      icons:
+        bin_empty: "\udb82\ude7a"
+        bin_filled: "\udb82\ude79"
+      container_padding:
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+      callbacks:
+        on_left: "open_bin"
+        on_right: "toggle_label"
+        on_middle: "empty_bin"
