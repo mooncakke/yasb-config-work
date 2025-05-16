@@ -58,13 +58,13 @@ bars:
         #"bin",
         #"memory",
         #"cpu",
-        #"wifi",
         #"traffic",
         "weather",
         "pomodoro",
         "battery",
         "volume",
         "microphone",
+        #"wifi",
         "brightness",
         "power_menu"
         ]
@@ -304,33 +304,39 @@ widgets:
         on_left: "next_layout"
         on_middle: "toggle_monocle"
         on_right: "prev_layout"
+
   weather:
     type: "yasb.weather.WeatherWidget"
     options:
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: "3bf4cf9a7c3f40d6b31174128242807"
+      api_key: "a49e74992819449f9df23735252804" # Get your free API key from https://www.weatherapi.com/
       show_alerts: true
-      update_interval: 600
+      update_interval: 600 # Update interval in seconds, Min 600 seconds
       hide_decimal: true
-      units: "metric"
-      location: "Joao Pessoa, PB, BRA"
+      units: "metric" # Can be 'metric' or 'imperial'
+      location: "Joao Pessoa, PB, BRA" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
       callbacks:
         on_left: "toggle_card"
         on_middle: "do_nothing"
         on_right: "toggle_label"
-      icons: 
+      icons:
         sunnyDay: "\ue30d"
         clearNight: "\ue32b"
-        cloudyDay: "\udb81\udd99"
+        cloudyDay: "\ue312"
         cloudyNight: "\ue311"
-        rainyDay: "\udb81\ude7e"
-        rainyNight: "\udb81\ude7e"
-        snowyIcyDay: "\udb81\udd98"
-        snowyIcyNight: "\udb81\udd98"
-        blizzard: "\uebaa"
-        default: "\uebaa"
-      weather_card: 
+        rainyDay: "\ue308"
+        rainyNight: "\ue333"
+        snowyIcyDay: "\ue30a"
+        snowyIcyNight: "\ue335"
+        blizzardDay: '\udb83\udf36'
+        blizzardNight: '\udb83\udf36'
+        foggyDay: '\ue303'
+        foggyNight: '\ue346'
+        thunderstormDay: '\ue30f'
+        thunderstormNight: '\ue338'
+        default: '\uebaa'
+      weather_card:
         blur: True
         round_corners: True
         round_corners_type: "normal"
@@ -338,6 +344,12 @@ widgets:
         alignment: "right"
         direction: "down"
         icon_size: 64
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
+
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
