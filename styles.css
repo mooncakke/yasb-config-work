@@ -250,13 +250,22 @@ QToolTip {
 .weather-widget .label {}
 .weather-widget .label.alt {}
 .weather-widget .icon {}
+
+/* Individual weather icons */
+.weather-widget .icon.sunnyDay {}
+.weather-widget .icon.clearNight {}
 .weather-widget .icon.cloudyDay {}
-.weather-widget .icon.cloudyNight {} 
-.weather-widget .icon.rainyDay {} 
-.weather-widget .icon.rainyNight {} 
-.weather-widget .icon.snowyIcyDay {} 
-.weather-widget .icon.snowyIcyNight {} 
-.weather-widget .icon.blizzard {} 
+.weather-widget .icon.cloudyNight {}
+.weather-widget .icon.rainyDay {}
+.weather-widget .icon.rainyNight {}
+.weather-widget .icon.snowyIcyDay {}
+.weather-widget .icon.snowyIcyNight {}
+.weather-widget .icon.blizzardDay {}
+.weather-widget .icon.blizzardNight {}
+.weather-widget .icon.foggyDay {}
+.weather-widget .icon.foggyNight {}
+.weather-widget .icon.thunderstormDay {}
+.weather-widget .icon.thunderstormNight {}
 .weather-widget .icon.default {}
 
 /* Weather card style */
@@ -266,7 +275,7 @@ QToolTip {
 .weather-card-today {
     border: 1px solid #282936;
     border-radius: 8px;
-    background-color:  rgba(17, 17, 27, 0.2);
+    background-color:  rgba(24, 17, 27, 0.2);
 }
 .weather-card-today .label {
     font-size: 12px;
@@ -275,7 +284,7 @@ QToolTip {
     font-size: 24px;
     font-weight: 700;
 }
-.weather-card-today .label.arert {
+.weather-card-today .label.alert {
     font-size: 12px;
     font-weight: 700;
     background-color: rgba(247, 199, 42, 0.05);
@@ -362,7 +371,7 @@ QToolTip {
 .home-menu .menu-item {
     padding: 8px 48px 9px 16px;
     font-size: 12px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     color: var(--text);
     font-weight: 600;
 }
@@ -403,7 +412,7 @@ QToolTip {
     font-size: 14px;
     font-weight: 600;
     border-radius: 4px;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI';
 }
 
 .whkd-popup .keybind-buttons-container {
@@ -437,7 +446,7 @@ QToolTip {
 .whkd-popup .filter-input {
     padding: 0 8px 2px 8px;
     font-size: 14px;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI';
     border: 1px solid #2e2e2e;
     border-radius: 4px;
     outline: none;
@@ -492,11 +501,11 @@ QToolTip {
 }
 .notes-widget .label {
    font-size: 14px;
-   color: #dbfeb4;;
+   color: #af97d7;;
 }
 .notes-widget .icon {
     font-size: 16px;
-    color: #dbfeb4;
+    color: #af97d7;
 }
 /* Notes Widget Menu */
 .notes-menu {
@@ -528,15 +537,15 @@ QToolTip {
 }
 .notes-menu .note-item .title {
     font-size: 13px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
 }
 .notes-menu .note-item .date {
     font-size: 12px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     color: rgba(255, 255, 255, 0.4);
 }
 .notes-menu .empty-list {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     color: rgba(255, 255, 255, 0.2);
     font-size: 24px;
     font-weight: 600;
@@ -549,7 +558,7 @@ QToolTip {
     border: none;
     border-radius: 4px;
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
 }
 .notes-menu .cancel-button {
     margin-left: 4px;
@@ -566,7 +575,7 @@ QToolTip {
 .notes-menu .note-input {
     background-color:rgba(17, 17, 27, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     font-size: 14px;
     max-height: 30px;
     padding: 4px;
@@ -611,7 +620,7 @@ QToolTip {
 }
 .pomodoro-widget .label.work,
 .pomodoro-widget .icon.work {
-    color: #a6e3a1;
+    color: #af97d7;
 }
 .pomodoro-widget .label.break,
 .pomodoro-widget .icon.break {
@@ -735,7 +744,7 @@ QToolTip {
 .calendar .calendar-table::item {
     background-color: rgba(17, 17, 27, 0);
     color: rgba(162, 177, 196, 0.85);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     margin: 0;
     padding: 0;
     border: none;
@@ -750,7 +759,7 @@ QToolTip {
 .calendar .day-label,
 .calendar .month-label,
 .calendar .date-label {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     font-size: 16px;
     color: #fff;
     font-weight: 700;
@@ -767,3 +776,8 @@ QToolTip {
     margin-top: -20px;
 }
 
+.wifi-widget {}
+.wifi-widget .widget-container {}
+.wifi-widget .widget-container .label {}
+.wifi-widget .widget-container .label.alt {}
+.wifi-widget .widget-container .icon {}
