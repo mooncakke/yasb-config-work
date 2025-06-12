@@ -45,6 +45,7 @@ bars:
         "bluetooth",
         "whkd",
         "disk",
+        #"komorebi_control",
         "clock",
         "notes",
         #"active_window",
@@ -59,6 +60,7 @@ bars:
         #"memory",
         #"cpu",
         #"traffic",
+        #"systray",
         "weather",
         "pomodoro",
         "battery",
@@ -254,18 +256,36 @@ widgets:
     options:
       label_offline: "\u23fc Offline"
       label_workspace_btn: "\udb81\udc3d"
-      label_workspace_active_btn: ""
+      label_workspace_active_btn: "\udb81\udc3e"
       label_workspace_populated_btn: "\udb81\udc3e"
       label_default_name: "{index}"
       label_zero_index: false
       hide_empty_workspaces: false
       hide_if_offline: true
       animation: true
+      toggle_workspace_layer:
+        enabled: false
+        tiling_label: "Tiling"
+        floating_label: "Floating"
+      app_icons: 
+        enabled_populated: false
+        enabled_active: false
+        size: 12
+        max_icons: 0
+        hide_label: false
+        hide_duplicates: false
+        hide_floating: false
       container_padding:
         top: 0
         left: 8
         bottom: 0
         right: 8
+      btn_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
+
   komorebi_active_layout:
     type: "komorebi.active_layout.ActiveLayoutWidget"
     options:
@@ -445,21 +465,29 @@ widgets:
         - { icon: "\ue7da", launch: "C:\\Users\\midas\\AppData\\Local\\Figma\\app-125.2.3\\Figma.exe" }
         #- { icon: "\ueddb", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Zen.lnk" }
         - { icon: "\ue8da", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk" }
+ 
   taskbar:
     type: "yasb.taskbar.TaskbarWidget"
     options:
+      icon_size: 16
       animation:
         enabled: true
-      icon_size: 16
+        duration: 200
+        type: "fadeInOut"
+      title_label:
+        enabled: false
+        show: "focused"
+        min_length: 10
+        max_length: 30
       ignore_apps:
         processes: []
         titles: []
         classes: []
-      container_padding:
+      container_padding: 
         top: 0
-        left: 0
+        left: 8
         bottom: 0
-        right: 0
+        right: 8
     
   whkd:
     type: "yasb.whkd.WhkdWidget"
@@ -555,3 +583,54 @@ widgets:
         on_left: "open_bin"
         on_right: "toggle_label"
         on_middle: "empty_bin"
+
+  komorebi_control:
+      type: "komorebi.control.KomorebiControlWidget"
+      options:
+        label: "<span>\udb80\uddd9</span>"
+        icons:
+          start: "\uead3"
+          stop: "\uead7"
+          reload: "\uead2"
+        run_ahk: false
+        run_whkd: true
+        show_version: true
+        komorebi_menu:
+          blur: True
+          round_corners: True
+          round_corners_type: 'normal'
+          border_color: 'System'
+          alignment: 'left'
+          direction: 'down'
+          offset_top: 6
+          offset_left: 0
+        label_shadow:
+          enabled: true
+          color: "black"
+          radius: 3
+          offset: [ 1, 1 ]
+
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: "▼"
+      label_expanded: "▶"
+      label_position: "left" # Can be "left" or "right"
+      icon_size: 16 # Can be any integer between 8 and 64
+      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
+      show_unpinned: true
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: false
+      container_padding:
+          left: 0
+          top: 0
+          right: 0
+          bottom: 0
+      btn_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
