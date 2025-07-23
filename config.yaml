@@ -40,7 +40,7 @@ bars:
         [
           "home",
           #"wallpaper",
-          "komorebi_workspaces",
+          #"komorebi_workspaces",
           #"komorebi_active_layout",
           "pomodoro",
           "notes",
@@ -62,6 +62,7 @@ bars:
       right:
         [
           #"cava",
+          "vscode",
           "launchpad",
           "volume",
           #"wifi",
@@ -233,10 +234,10 @@ widgets:
         - {icon: "\ueb51", launch: "quick_settings"}
         - { icon: "\uf268", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Google Chrome.lnk" }
         #- { icon: "\uf269", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Firefox.lnk" }
-        - { icon: "\ued39", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Vivaldi.lnk" }
+        #- { icon: "\ued39", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Vivaldi.lnk" }
         - { icon: "\uf1bc", launch: "C:\\Users\\midas\\AppData\\Roaming\\Spotify\\Spotify.exe" }
         - { icon: "\uf370", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Thunderbird.lnk" }
-        - { icon: "\uf181", launch: "C:\\Users\\midas\\Desktop\\Trello.lnk" }
+        #- { icon: "\uf181", launch: "C:\\Users\\midas\\Desktop\\Trello.lnk" }
         - { icon: "\ue848", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Notion.lnk" }
         #- { icon: "\ue787", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Obsidian.lnk" }
         - { icon: "\ue7da", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Figma.lnk" }
@@ -455,8 +456,8 @@ widgets:
   clock:
     type: "yasb.clock.ClockWidget"
     options:
-      label: "\uf017 {%H:%M:%S}"
-      label_alt: "\uf017 {%a, %d %b %H:%M:%S}"
+      label: "\uf017 {%d %b %H:%M:%S}"
+      label_alt: "\uf017 {%a %d %b %H:%M:%S}"
       timezones: [] #Looking up time zone info from registry
       locale: ""   # pt_BR.UTF-8 <--- Aqui!
       update_interval: 1000
@@ -802,3 +803,26 @@ widgets:
         color: "#00000090"
         offset: [0, 2]
         radius: 8
+
+  vscode:
+      type: "yasb.vscode.VSCodeWidget"
+      options:
+        label: "<span>\udb82\ude1e</span>"
+        label_alt: "<span>\udb82\ude1e</span> recents"
+        menu_title: "<span style='font-weight:bold'>VScode</span> recents"
+        max_field_size: 50
+        folder_icon: "\uf114"
+        file_icon: "\uf016"
+        truncate_to_root_dir: false
+        hide_folder_icon: false
+        hide_file_icon: false
+        max_number_of_folders: 30
+        max_number_of_files: 30 # set to 0 if you only want folders
+        modified_date_format: "Date modified: %Y-%m-%d %H:%M"
+        cli_command: "code" # or "codium" or "windsurf" or any other CLI command to open the workspace
+        menu:
+          blur: true
+          round_corners: true
+          round_corners_type: "small"
+          alignment: 'center'
+          offset_top: 0
