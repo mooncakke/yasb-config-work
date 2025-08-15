@@ -642,8 +642,11 @@ color: rgb(203, 166, 247);
 .media-menu {
     min-width: 420px;
     max-width: 420px;
-    background-color: #1e1e2e;
-	border-radius: 8px;
+    background-color: rgba(30, 30, 46, 0.45); /* um pouco mais transparente */
+    backdrop-filter: blur(14px); /* mais desfoque */
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08); /* borda suave */
 }
 .media-menu .title,
 .media-menu .artist,
@@ -1506,3 +1509,4 @@ Example: "Windows Media" becomes "windows-media" */
     background-color: #45475a;
     border-bottom: 1px solid rgba(255, 255, 255, 0);
 }
+
