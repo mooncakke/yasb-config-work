@@ -39,6 +39,7 @@ bars:
       left:
         [
           "home",
+          "bin",
           #"wallpaper",
           #"komorebi_workspaces",
           #"komorebi_active_layout",
@@ -47,6 +48,7 @@ bars:
           "todo",
           "clock",
           "weather",
+          "launchpad",
           #"update_check",
           #"cpu",
           #"memory",
@@ -63,12 +65,11 @@ bars:
         [
           #"cava",
           "vscode",
-          "launchpad",
           "volume",
-          #"wifi",
           "microphone",
           "battery",
           "bluetooth",
+          "wifi",
           "brightness",
           "whkd",
           "disk",
@@ -242,7 +243,7 @@ widgets:
         #- { icon: "\ue787", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Obsidian.lnk" }
         - { icon: "\ue7da", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Figma.lnk" }
         #- { icon: "\ueddb", launch: "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Zen.lnk" }
-        - { icon: "\ue8da", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk" }
+        #- { icon: "\ue8da", launch: "C:\\Users\\midas\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk" }
 
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
@@ -479,8 +480,9 @@ widgets:
     options:
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: "a49e74992819449f9df23735252804" # Get your free API key from https://www.weatherapi.com/
+      api_key: "f7f47e47d5bc4683afd11152252108" # Get your free API key from https://www.weatherapi.com/
       show_alerts: true
+      tooltip: true
       update_interval: 600 # Update interval in seconds, Min 600 seconds
       hide_decimal: true
       units: "metric" # Can be 'metric' or 'imperial'
@@ -513,11 +515,21 @@ widgets:
         alignment: "right"
         direction: "down"
         icon_size: 64
+        show_hourly_forecast: True # Set to False to disable hourly forecast
+        time_format: "24h" # can be 12h or 24h
+        hourly_point_spacing: 76
+        hourly_icon_size: 32 # better to set 16, 32 or 64 for better quality
+        icon_smoothing: true # should be true for smoother icon or false for sharper icon if using 16, 32 or 64 for hourly_icon_size
+        temp_line_width: 2 # can be 0 to hide the temperature line
+        current_line_color: "#8EAEE8"
+        current_line_width: 1 # can be 0 to hide the current hour line
+        current_line_style: "dot"
       label_shadow:
         enabled: true
         color: "black"
         radius: 3
         offset: [ 1, 1 ]
+
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
@@ -826,3 +838,26 @@ widgets:
           round_corners_type: "small"
           alignment: 'center'
           offset_top: 0
+
+  bin:
+    type: "yasb.recycle_bin.RecycleBinWidget"
+    options:
+      label: "<span>{icon}</span> {items_size}"
+      label_alt: "Items {items_count}, Total size ({items_size})"
+      icons:
+        bin_empty: "\udb82\ude7a"
+        bin_filled: "\udb82\ude79"
+      container_padding:
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+      callbacks:
+        on_left: "open_bin"
+        on_right: "toggle_label"
+        on_middle: "empty_bin"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
