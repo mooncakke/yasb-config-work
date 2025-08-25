@@ -208,6 +208,82 @@
 	margin-right: 7px;
 }
 
+.clock-widget {}
+/* If you are using class_name option, you can add custom styles here */
+.clock-widget.your_class {}
+.clock-widget .widget-container {}
+.clock-widget .widget-container .label {}
+.clock-widget .widget-container .label.alt {}
+.clock-widget .widget-container .icon {}
+.clock-widget .icon {}
+.clock-widget .icon.clock_02 {}
+.clock-widget .label.clock_15 {}
+/* Calendar styles */
+.calendar {}
+.calendar .calendar-table {}
+.calendar .calendar-table::item {}
+.calendar .calendar-table::item:selected {}
+.calendar .day-label {}
+.calendar .month-label {}
+.calendar .date-label {}
+.calendar .week-label {}
+.calendar .holiday-label {}
+
+
+.calendar {
+    background-color: rgba(17, 17, 27, 0.4);
+}
+.calendar .calendar-table,
+.calendar .calendar-table::item {
+    background-color: rgba(17, 17, 27, 0);
+    color: rgba(162, 177, 196, 0.85);
+    font-family: 'Segoe UI';
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;  
+}
+.calendar .calendar-table::item:selected {
+    color: rgb(255, 255, 255);
+    background-color: #007acc;
+    border-radius: 10px;
+}
+.calendar .day-label {
+    margin-top: 20px;
+}
+.calendar .day-label,
+.calendar .month-label,
+.calendar .date-label,
+.calendar .week-label,
+.calendar .holiday-label {
+    font-family: 'Segoe UI';
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+    min-width: 180px;
+    max-width: 180px;
+}
+.calendar .week-label,
+.calendar .holiday-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(162, 177, 196, 0.85);
+}
+.calendar .holiday-label {
+    color: rgba(162, 177, 196, 0.85);
+    font-weight: 700;
+}
+.calendar .month-label {
+    font-weight: normal;
+}
+.calendar .date-label {
+    font-size: 88px;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    margin-top: -20px;
+}
+
+
 /***---------------------------------      • Weather Icons •      ----------------------------------***/
 
 .weather-widget .icon.sunnyDay {}
@@ -545,6 +621,181 @@
 /* WIFI Setting */
 .wifi-widget .icon{
     color: var(--mauve) !important;
+}
+
+.wifi-widget {}
+.wifi-widget.your_class {} /* If you are using class_name option */
+.wifi-widget .widget-container {}
+.wifi-widget .widget-container .label {}
+.wifi-widget .widget-container .label.alt {}
+.wifi-widget .widget-container .icon {}
+
+.wifi-menu {}
+.wifi-menu .progress-bar {}
+.wifi-menu .progress-bar::chunk {}
+.wifi-menu .header {}
+.wifi-menu .error-message {}
+.wifi-menu .wifi-list {}
+.wifi-menu .wifi-item {}
+.wifi-menu .wifi-item[active=true] {}
+.wifi-menu .wifi-item .icon {}
+.wifi-menu .wifi-item .name {}
+.wifi-menu .wifi-item .password {}
+.wifi-menu .wifi-item .status {}
+.wifi-menu .wifi-item .strength {}
+.wifi-menu .wifi-item .controls-container {}
+.wifi-menu .wifi-item .connect {}
+.wifi-menu .footer {}
+.wifi-menu .footer .settings-button {}
+.wifi-menu .footer .refresh-icon {}
+
+/* Right click menu style */
+.context-menu {}
+.context-menu .menu-checkbox {}
+.context-menu .menu-checkbox .checkbox {}
+.context-menu::item {}
+
+.wifi-menu {
+    font-family: 'Segoe UI';
+    background-color: rgba(17, 17, 27, 0.4);
+    max-height: 350px;
+    min-height: 375px;
+    min-width: 375px;
+}
+
+.wifi-menu .progress-bar {
+    max-height: 2px;
+}
+
+.wifi-menu .progress-bar::chunk {
+    background-color: #4cc2ff;
+}
+
+.wifi-menu .header {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    padding: 12px;
+    background-color: rgba(17, 17, 27, 0.6);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wifi-menu .error-message {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    padding: 12px;
+    background-color: red;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wifi-menu .wifi-list {
+    background-color: rgba(17, 17, 27, 0.8);
+    margin-right: 3px;
+}
+
+.wifi-menu .wifi-item {
+    min-height: 35px;
+    padding: 2px 12px;
+    margin: 2px 4px;
+}
+
+.wifi-menu .wifi-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.wifi-menu .wifi-item[active=true] {
+    background-color: rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+    border-radius: 6px;
+    min-height: 80px;
+}
+
+.wifi-menu .wifi-item .icon {
+    font-family: 'Segoe Fluent Icons';
+    font-size: 26px;
+    margin-right: 10px;
+}
+
+.wifi-menu .wifi-item .name {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.wifi-menu .wifi-item .password {
+    font-family: 'Segoe UI';
+    background-color: transparent;
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .status {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .strength {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .controls-container {
+    padding-top: 8px;
+}
+
+.wifi-menu .wifi-item .connect {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 4px 30px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .connect:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.wifi-menu .wifi-item .connect:pressed {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.wifi-menu .footer {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px;
+    margin-top: 2px;
+    color: #9399b2;
+    background-color: rgba(17, 17, 27, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wifi-menu .footer .settings-button {
+    font-family: 'Segoe UI';
+    background-color: transparent;
+    border: none;
+    padding: 0 2px;
+    min-width: 26px;
+    min-height: 26px;
+    color: #fff;
+}
+
+.wifi-menu .footer .refresh-icon {
+    font-family: 'Segoe Fluent Icons';
+    background-color: transparent;
+    border: none;
+    min-width: 26px;
+    min-height: 26px;
+    color: #fff;
+}
+
+.wifi-menu .footer .refresh-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
 }
 
 
@@ -977,6 +1228,77 @@ Example: "Windows Media" becomes "windows-media" */
 }
 
 /* Todo Widget Styles */
+
+.todo-widget {}
+.todo-widget .icon {}
+.todo-widget .label {}
+/* todo-menu styles */
+.todo-menu {}
+.todo-menu .header {}
+.todo-menu .header .add-task-button {}
+.todo-menu .header .tab-buttons {}
+.todo-menu .header .tab-buttons.in-progress {}
+.todo-menu .header .tab-buttons.completed {}
+.todo-menu .header .tab-buttons.in-progress:checked {}
+.todo-menu .header .tab-buttons.completed:checked {}
+.todo-menu .header .tab-buttons.sort {}
+.todo-menu .header .tab-buttons.sort:pressed {}
+.todo-menu .header .toggle-tab.in-progress {}
+.todo-menu .no-tasks {}
+.todo-menu .no-tasks-icon {}
+/* todo-menu task item styles */
+.todo-menu .task-item {}
+.todo-menu .task-item.expanded {}
+/* todo-menu task item styles based on category */
+.todo-menu .task-item.important {}
+.todo-menu .task-item.urgent {}
+.todo-menu .task-item.soon {}
+.todo-menu .task-item.today {}
+.todo-menu .task-item.default {}
+
+.todo-menu .task-item.drop-highlight {}
+.todo-menu .task-item.drop-highlight:hover {}
+.todo-menu .task-item.drop-highlight:focus {}
+.todo-menu .task-item .title {}
+.todo-menu .task-item.completed .title {}
+.todo-menu .task-item.completed .description {}
+.todo-menu .task-item .description {}
+.todo-menu .task-checkbox {}
+.todo-menu .task-checkbox:checked {}
+.todo-menu .task-info-row {}
+.todo-menu .task-info-row .date-text {}
+.todo-menu .task-info-row .category-text {}
+.todo-menu .task-info-row .date-icon {}
+.todo-menu .task-info-row .category-icon {}
+.todo-menu .task-info-row .category-text.important {}
+.todo-menu .task-info-row .category-icon.important {}
+.todo-menu .task-info-row .category-text.urgent {}
+.todo-menu .task-info-row .category-icon.urgent {}
+.todo-menu .task-info-row .category-text.soon {}
+.todo-menu .task-info-row .category-icon.soon {}
+.todo-menu .task-info-row .category-text.today {}
+.todo-menu .task-info-row .category-icon.today {}
+.todo-menu .task-info-row .delete-task-button {}
+/* todo-menu dialog styles */
+.todo-menu .app-dialog {}
+.todo-menu .app-dialog .buttons-container {}
+.todo-menu .app-dialog .title-field {}
+.todo-menu .app-dialog .desc-field {}
+.todo-menu .app-dialog .title-field:focus {}
+.todo-menu .app-dialog .desc-field:focus {}
+.todo-menu .app-dialog .buttons-container .button {}
+.todo-menu .app-dialog .button {}
+.todo-menu .app-dialog .button:pressed {}
+.todo-menu .app-dialog .button.add {}
+.todo-menu .app-dialog .button.add:pressed {}
+.todo-menu .app-dialog .warning-message {}
+.todo-menu .app-dialog .category-button {}
+.todo-menu .app-dialog .category-button.urgent {}
+.todo-menu .app-dialog .category-button.soon {}
+.todo-menu .app-dialog .category-button.today {}
+.todo-menu .app-dialog .category-button.important {}
+.todo-menu .app-dialog .category-button:checked {}
+
 .todo-widget {
     padding: 0 6px 0 6px;
 }
