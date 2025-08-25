@@ -459,21 +459,47 @@ widgets:
     options:
       label: "\uf017 {%d %b %H:%M:%S}"
       label_alt: "\uf017 {%a %d %b %H:%M:%S}"
-      timezones: [] #Looking up time zone info from registry
-      locale: ""   # pt_BR.UTF-8 <--- Aqui!
+      locale: "" # pt_BR.UTF-8
       update_interval: 1000
+      timezones: []
+      icons:
+        clock_01 : "\udb85\udc3f"
+        clock_02 : "\udb85\udc40"
+        clock_03 : "\udb85\udc41"
+        clock_04 : "\udb85\udc42"
+        clock_05 : "\udb85\udc43"
+        clock_06 : "\udb85\udc44"
+        clock_07 : "\udb85\udc45"
+        clock_08 : "\udb85\udc46"
+        clock_09 : "\udb85\udc47"
+        clock_10 : "\udb85\udc48"
+        clock_11 : "\udb85\udc49"
+        clock_12 : "\udb85\udc4a"
+        clock_16 : "SNACK TIME !"
+        clock_21 : "Zzz..."
+        clock_22 : "Zzz..."
+        clock_23 : "Zzz..."
       calendar: 
-        blur: True
-        round_corners: True
+        blur: true
+        round_corners: true
         round_corners_type: "normal"
-        border_color: "System"
+        border_color: "system"
         alignment: "center"
         direction: "down"
         distance: 6
+        show_holidays: false
+        show_week_numbers: true
+        country_code: "AR"
+        holiday_color: "#FF6464"
       callbacks:
         on_left: "toggle_calendar"
         on_middle: "toggle_label"
         on_right: "next_timezone"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
 
   weather:
     type: "yasb.weather.WeatherWidget"
@@ -661,28 +687,55 @@ widgets:
         left: 8
         bottom: 0
         right: 0
+
   wifi:
-      type: "yasb.wifi.WifiWidget"
-      options:
-        label: "<span>{wifi_icon}</span>"
-        label_alt: "{wifi_name} {wifi_strength}%"
-        update_interval: 5000
-        callbacks:
-          on_left: "exec cmd.exe /c start ms-settings:network"
-          on_middle: "do_nothing"
-          on_right: "toggle_label"
-        container_padding:
-          top: 0
-          left: 0
-          bottom: 0
-          right: 0
-        wifi_icons: [
-          "\udb82\udd2e",  # Icon for 0% strength
-          "\udb82\udd1f",  # Icon for 1-20% strength
-          "\udb82\udd22",  # Icon for 21-40% strength
-          "\udb82\udd25",  # Icon for 41-80% strength
-          "\udb82\udd28"   # Icon for 81-100% strength
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "{wifi_name} {wifi_strength}%"
+      update_interval: 5000
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "exec cmd.exe /c start ms-settings:network"
+        on_right: "toggle_label"
+      ethernet_label: "<span>{wifi_icon}</span>"
+      ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
+      ethernet_icon: "\ueba9"
+      get_exact_wifi_strength: false  # Optional. Will require location access permission if true.
+      wifi_icons: [
+        "\udb82\udd2e",  # Icon for 0% strength
+        "\udb82\udd1f",  # Icon for 1-24% strength
+        "\udb82\udd22",  # Icon for 25-49% strength
+        "\udb82\udd25",  # Icon for 50-74% strength
+        "\udb82\udd28"   # Icon for 75-100% strength
+      ]
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        wifi_icons_secured: [
+          "\ue670",
+          "\ue671",
+          "\ue672",
+          "\ue673",
         ]
+        wifi_icons_unsecured: [
+          "\uec3c",
+          "\uec3d",
+          "\uec3e",
+          "\uec3f",
+        ]
+
   update_check:
     type: "yasb.update_check.UpdateCheckWidget"
     options:
@@ -742,8 +795,8 @@ widgets:
   todo:
     type: "yasb.todo.TodoWidget"
     options:
-      label: "\uf4a0 {count}/{completed}"
-      label_alt: "\uf4a0 Tasks: {count}"
+      label: "\uf0ae {count}/{completed}"
+      label_alt: "\uf0ae Tasks: {count}"
       menu:
         blur: true
         round_corners: true
