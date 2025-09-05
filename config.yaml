@@ -69,7 +69,7 @@ bars:
           "microphone",
           "battery",
           "bluetooth",
-          "wifi",
+          #"wifi",
           "brightness",
           "whkd",
           "disk",
